@@ -22,3 +22,12 @@ type: "module"
 
 # Usage
 Check out the sample project in the directory above this on how to then use it.
+
+
+# Publishing
+Ensure you have a github PAT
+`npm login --scope=@AdvantageOne --auth-type=legacy --registry=https://npm.pkg.github.com`
+
+Navigate to lib-module directory
+Update version number in package.json
+`npm publish`
