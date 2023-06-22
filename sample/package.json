@@ -1,0 +1,8 @@
+{
+  "name": "sample",
+  "packageManager": "yarn@3.6.0",
+  "dependencies": {
+    "adv-mg-api-js": "file:../lib-module"
+  },
+  "type": "module"
+}

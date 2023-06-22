@@ -1,0 +1,10 @@
+{
+  "name": "lib-module",
+  "packageManager": "yarn@3.6.0",
+  "dependencies": {
+    "axios": "^1.4.0"
+  },
+  "types": "./types/index.d.ts",
+  "main": "./src/index.js",
+  "type": "module"
+}
