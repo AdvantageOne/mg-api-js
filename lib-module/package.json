@@ -1,5 +1,5 @@
 {
-  "name": "@AdvantageOne/adv-mg-api-js",
+  "name": "@advantageone/adv-mg-api-js",
   "packageManager": "yarn@3.6.0",
   "version": "2.1.0",
   "dependencies": {

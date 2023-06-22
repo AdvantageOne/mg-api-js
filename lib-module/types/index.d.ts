@@ -1,6 +1,3 @@
-import { Entity } from "./models/entity";
-
-declare module "adv-mg-api-js" {
   /**
    * Entrypoint to API. Separate class is used to expose "public"
    * methods only to the user - Babel currently doesn't support
@@ -475,4 +472,3 @@ declare module "adv-mg-api-js" {
     width: number;
     height: number;
   }
-}
