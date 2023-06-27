@@ -86,7 +86,8 @@
     | "Rule"
     | "Diagnostic"
     | "User"
-    | "Certificate";
+    | "Certificate"
+    | "DeviceStatusInfo";
 
   export interface DeviceSearch {
     id?: string;
