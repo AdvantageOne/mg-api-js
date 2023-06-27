@@ -257,7 +257,7 @@
     ratePlans: any[];
   }
 
-  export interface DeviceStatusInfo {
+  export interface DeviceStatusInfo extends Entity {
     bearing: number;
     currentStateDuration: string;
     exceptionEvents: [];
