@@ -93,7 +93,7 @@ export class GeotabApi {
         callbackError,
         this._helper.rememberMe
       );
-      params.credentials = auth.credentials;
+      params.credentials = auth.credentials || auth;
     }
     // Creating the actual call
     let call = this._helper.sendAxiosCall(
