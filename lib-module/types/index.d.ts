@@ -1,54 +1,22 @@
+import { Entity } from './models/entity.js'
+import { TypeName } from './models/typeName.js'
 
-import { TypeName as TypeNameImport } from './models/typeName.js'
-export type TypeName = TypeNameImport;
-
-import { Entity as EntityImport } from './models/entity.js'
-export type Entity = EntityImport;
-import { DeviceEntity as DeviceEntityImport } from './models/entity.js'
-export type DeviceEntity = DeviceEntityImport;
-
-import { Device as DeviceImport } from './models/device.js'
-export type Device = DeviceImport;
-
-import { DistributionList as DistributionListImport } from './models/distributionList.js'
-export type DistributionList = DistributionListImport;
-
-import { DeviceStatusInfo as DeviceStatusInfoImport } from './models/deviceStatusInfo.js'
-export type DeviceStatusInfo = DeviceStatusInfoImport;
-
-import { Diagnostic as DiagnosticImport } from './models/diagnostic.js'
-export type Diagnostic = DiagnosticImport;
-
-import { Exception as ExceptionImport, ExceptionEvent as ExceptionEventImport } from './models/exception.js';
-export type Exception = ExceptionImport;
-export type ExceptionEvent = ExceptionEventImport;
-
-import { FaultData as FaultDataImport } from './models/faultData.js'
-export type FaultData = FaultDataImport;
-
-import { Group as GroupImport } from './models/group.js';
-export type Group = GroupImport;
-
-import { LogRecord as LogRecordImport } from './models/logRecord.js'
-export type LogRecord = LogRecordImport;
-
-import { Rule as RuleImport } from './models/rule.js'
-export type Rule = RuleImport;
-
-import { StatusData as StatusDataImport } from './models/statusData.js'
-export type StatusData = StatusDataImport;
-
-import { Trip as TripImport } from './models/trip.js'
-export type Trip = TripImport;
-
-import { User as UserImport } from './models/user.js'
-export type User = UserImport;
-
-import { Zone as ZoneImport } from './models/zone.js'
-export type Zone = ZoneImport;
-
-
-
+export { TypeName } from './models/typeName.js'
+export { Entity } from './models/entity.js'
+export { DeviceEntity } from './models/entity.js'
+export { Device } from './models/device.js'
+export { DistributionList } from './models/distributionList.js'
+export { DeviceStatusInfo } from './models/deviceStatusInfo.js'
+export { Diagnostic } from './models/diagnostic.js'
+export { Exception, ExceptionEvent } from './models/exception.js'
+export { FaultData } from './models/faultData.js'
+export { Group } from './models/group.js'
+export { LogRecord } from './models/logRecord.js'
+export { Rule } from './models/rule.js'
+export { StatusData } from './models/statusData.js'
+export { Trip } from './models/trip.js'
+export { User } from './models/user.js'
+export { Zone } from './models/zone.js'
 
 /**
  * Entrypoint to API. Separate class is used to expose "public"
