@@ -5,6 +5,14 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@advantageone/adv-mg-api-js@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@advantageone/adv-mg-api-js@workspace:."
+  dependencies:
+    axios: ^1.5.0
+  languageName: unknown
+  linkType: soft
+
 "asynckit@npm:^0.4.0":
   version: 0.4.0
   resolution: "asynckit@npm:0.4.0"
@@ -12,14 +20,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "axios@npm:1.4.0"
+"axios@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "axios@npm:1.5.0"
   dependencies:
     follow-redirects: ^1.15.0
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-  checksum: 7fb6a4313bae7f45e89d62c70a800913c303df653f19eafec88e56cea2e3821066b8409bc68be1930ecca80e861c52aa787659df0ffec6ad4d451c7816b9386b
+  checksum: e7405a5dbbea97760d0e6cd58fecba311b0401ddb4a8efbc4108f5537da9b3f278bde566deb777935a960beec4fa18e7b8353881f2f465e4f2c0e949fead35be
   languageName: node
   linkType: hard
 
@@ -59,14 +67,6 @@ __metadata:
   checksum: 01135bf8675f9d5c61ff18e2e2932f719ca4de964e3be90ef4c36aacfc7b9cb2fceb5eca0b7e0190e3383fe51c5b37f4cb80b62ca06a99aaabfcfd6ac7c9328c
   languageName: node
   linkType: hard
-
-"lib-module@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "lib-module@workspace:."
-  dependencies:
-    axios: ^1.4.0
-  languageName: unknown
-  linkType: soft
 
 "mime-db@npm:1.52.0":
   version: 1.52.0

@@ -1,4 +1,5 @@
-import { Entity } from "./entity";
+import { Color } from "./color.js";
+import { Entity } from "./entity.js";
 
 export interface Group extends Entity {
 	children?: Group[];
@@ -6,11 +7,4 @@ export interface Group extends Entity {
 	comments?: string;
 	name?: string;
 	reference?: string;
-}
-
-interface Color {
-	a: number;
-	b: number;
-	g: number;
-	r: number;
 }

@@ -1,6 +1,7 @@
-import { Group } from ".";
-import { Diagnostic } from "./diagnostic";
-import { Entity } from "./entity";
+import { Group } from "./group.js";
+import { Color } from "./color.js";
+import { Diagnostic } from "./diagnostic.js";
+import { Entity } from "./entity.js";
 
 export interface Rule extends Entity {
 	activeFrom?: string;
@@ -12,13 +13,6 @@ export interface Rule extends Entity {
 	name?: string;
 	groups?: Group[];
 	version?: string;
-}
-
-export interface Color {
-	a: number;
-	b: number;
-	g: number;
-	r: number;
 }
 
 export interface ChildRule extends Entity {

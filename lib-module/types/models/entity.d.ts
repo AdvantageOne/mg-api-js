@@ -1,4 +1,4 @@
-import { Device } from ".";
+import { Device } from "./device.js";
 
 export interface Entity {
 	id?: string

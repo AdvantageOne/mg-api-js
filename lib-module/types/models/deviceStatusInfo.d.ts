@@ -1,4 +1,7 @@
-export interface DeviceStatusInfo {
+import { DeviceEntity } from "./entity.js";
+import { Group } from "./group.js";
+
+export interface DeviceStatusInfo extends DeviceEntity {
     bearing: number,
     currentStateDuration: string,
     exceptionEvents: [],
@@ -8,13 +11,7 @@ export interface DeviceStatusInfo {
     longitude: number,
     speed: number,
     dateTime: string,
-    device: {
-        id: string
-    },
     driver: string,
     isHistoricLastDriver: boolean,
-    groups: [{
-        children: [],
-        id: string
-    }]
+    groups: Group[]
 }

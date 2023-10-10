@@ -1,4 +1,4 @@
-import { Group } from ".";
+import { Group } from "./group";
 import { Entity } from "./entity";
 
 export interface User extends Entity {
