@@ -1,7 +1,22 @@
-import { Entity } from "./entity";
-import { Rule } from "./rule";
+import { BaseCall } from "../index.js";
+import { Entity } from "./entity.js";
+import { EntitySearch } from "./entitySearch.js";
+import { Rule } from "./rule.js";
 
-type Recipient = {
+export type DistributionListCall = {
+	typeName: "DistributionList"
+}
+
+export type DistributionListSetCall = DistributionListCall &{
+	entity: DistributionList
+}  
+
+export interface DistributionListSearch extends EntitySearch {
+}
+
+export type DistributionListGetCall = DistributionListCall & BaseCall & { search: DistributionListSearch}
+
+export type Recipient = {
 	recipientType: "Email";
 	address: string;
 	notificationBinaryFile: { id: string };

@@ -1,7 +1,8 @@
-import { DeviceEntity } from "./entity.js";
+import { DeviceEntity } from "./deviceEntity.js";
+import { Entity } from "./entity.js";
 import { Group } from "./group.js";
 
-export interface DeviceStatusInfo extends DeviceEntity {
+export interface DeviceStatusInfo extends Entity, DeviceEntity {
     bearing: number,
     currentStateDuration: string,
     exceptionEvents: [],

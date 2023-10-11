@@ -1,10 +1,23 @@
+import { Device } from './models/device.js'
+import { DeviceStatusInfo } from './models/deviceStatusInfo.js'
+import { Diagnostic } from './models/diagnostic.js'
+import { DistributionList } from './models/distributionList.js'
 import { Entity } from './models/entity.js'
+import { Exception } from './models/exception.js'
+import { FaultData } from './models/faultData.js'
+import { Group } from './models/group.js'
+import { LogRecord } from './models/logRecord.js'
+import { Rule } from './models/rule.js'
+import { StatusData } from './models/statusData.js'
+import { Trip } from './models/trip.js'
 import { TypeName } from './models/typeName.js'
+import { User } from './models/user.js'
+import { Zone } from './models/zone.js'
 
 export { TypeName } from './models/typeName.js'
 export { Entity } from './models/entity.js'
-export { DeviceEntity } from './models/entity.js'
 export { Device } from './models/device.js'
+export { DeviceEntity } from './models/deviceEntity.js'
 export { DistributionList } from './models/distributionList.js'
 export { DeviceStatusInfo } from './models/deviceStatusInfo.js'
 export { Diagnostic } from './models/diagnostic.js'
@@ -139,10 +152,17 @@ export interface FeedResult<T extends Entity> {
   toVersion: string;
 }
 
-export interface GeotabCall extends BaseCall {
-  entity?: Entity;
+// type ReadWriteEntities = Device | DistributionList | Exception | FaultData | Group | LogRecord | Rule | StatusData | Trip | User | Zone;
+// type ReadEntities = DeviceStatusInfo | Diagnostic;
+
+export type GeotabSetCall = DeviceSetCall
+
+export interface GeotabGetCall extends BaseCall {
   search?: Search;
 }
+
+export type GeotabCall = FeedCall | GeotabSetCall | GeotabGetCall;
+
 
 export type GeotabMultiCallParams = ["Get", GeotabCall][];
 

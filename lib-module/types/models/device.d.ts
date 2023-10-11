@@ -1,5 +1,39 @@
-import { Entity } from "./entity";
-import { Group } from "./group";
+import { BaseCall } from "../index.js";
+import { DateRangeSearch } from "./dateRangeSearch.js";
+import { DeviceFlags } from "./deviceFlags.js";
+import { Entity } from "./entity.js";
+import { EntitySearch } from "./entitySearch.js";
+import { Group, GroupEntitySearch } from "./group.js";
+
+export type DeviceType = "CustomDevice" | "CustomVehicleDevice" | "GO2" | "GO3" | "GO4" | "GO4v3" | "GO5" | "GO6" | "GO7" | "GO8" | "GO9" | "GoDriveDevice" | "None" | "OldGeotab"
+
+export type DeviceCall = {
+	typeName: "Device"
+}
+
+export type DeviceSetCall = DeviceCall & {
+	entity: Device
+}
+
+export interface DeviceSearch extends EntitySearch, DateRangeSearch, GroupEntitySearch {
+	comment?: string;
+	deviceIds?: string[];
+	deviceType?: DeviceType
+	serialNumber?: string;
+	name?: string
+	keywords?: string;
+	licensePlate?: string;
+	vehicleIdentificationNumber?: string;
+}
+
+export type DeviceGetCall = DeviceCall & BaseCall & { search: DeviceSearch }
+
+export type DeviceEntityIdSearch = Pick<Device, "id">;
+export type DeviceGroupSearch = { groups?: Pick<Group, "id">[] }
+
+export interface DeviceEntitySearch { deviceSearch?: DeviceEntityIdSearch}
+
+export interface DeviceEntityAndGroupSearch { deviceSearch?: DeviceEntityIdSearch & DeviceGroupSearch }
 
 export interface Device extends Entity {
 	obdAlertEnabled: boolean;
@@ -60,7 +94,7 @@ export interface Device extends Entity {
 	groups: Group[];
 	timeZoneId: string;
 	deviceFlags: DeviceFlags;
-	deviceType: string;
+	deviceType: DeviceType;
 	ignoreDownloadsUntil: string;
 	maxSecondsBetweenLogs: number;
 	name: string;
@@ -73,18 +107,4 @@ export interface Device extends Entity {
 }
 
 interface CustomFeatures {
-}
-
-interface DeviceFlags {
-	activeFeatures: any[];
-	isActiveTrackingAllowed: boolean;
-	isEngineAllowed: boolean;
-	isGarminAllowed: boolean;
-	isHOSAllowed: boolean;
-	isIridiumAllowed: boolean;
-	isOdometerAllowed: boolean;
-	isTripDetailAllowed: boolean;
-	isUIAllowed: boolean;
-	isVINAllowed: boolean;
-	ratePlans: any[];
 }
