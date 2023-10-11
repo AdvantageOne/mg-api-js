@@ -1,4 +1,4 @@
-import { BaseCall } from "../index.js";
+import { BaseGetCall } from "../index.js";
 import { Entity } from "./entity.js";
 import { EntitySearch } from "./entitySearch.js";
 import { Rule } from "./rule.js";
@@ -14,7 +14,7 @@ export type DistributionListSetCall = DistributionListCall &{
 export interface DistributionListSearch extends EntitySearch {
 }
 
-export type DistributionListGetCall = DistributionListCall & BaseCall & { search: DistributionListSearch}
+export type DistributionListGetCall = DistributionListCall & BaseGetCall & { search: DistributionListSearch}
 
 export type Recipient = {
 	recipientType: "Email";

@@ -1,9 +1,9 @@
-import { BaseCall, DiagnosticSearch } from "../index.js"
+import { BaseGetCall } from "../index.js"
 import { ControllerEntitySearch } from "./controller.js"
 import { DateRangeSearch } from "./dateRangeSearch.js"
-import { DeviceEntitySearch, DeviceSearch, } from "./device.js"
+import { DeviceEntitySearch, } from "./device.js"
 import { DeviceEntity } from "./deviceEntity.js"
-import { Diagnostic } from "./diagnostic.js"
+import { Diagnostic, DiagnosticSearch } from "./diagnostic.js"
 import { Entity } from "./entity.js"
 import { EntitySearch } from "./entitySearch.js"
 import { GroupEntitySearch } from "./group.js"
@@ -23,7 +23,7 @@ export interface FaultDataSearch extends EntitySearch, DateRangeSearch, Controll
     state?: string
 }
 
-export type FaultDataGetCall = FaultDataCall & BaseCall & { search: FaultDataSearch}
+export type FaultDataGetCall = FaultDataCall & BaseGetCall & { search: FaultDataSearch}
 
 export interface FaultSource extends Entity {
     name: string

@@ -1,4 +1,4 @@
-import { BaseCall } from "../index.js";
+import { BaseGetCall } from "../index.js";
 import { DateRangeSearch } from "./dateRangeSearch.js";
 import { DeviceEntitySearch } from "./device.js";
 import { DeviceEntity } from "./deviceEntity.js";
@@ -30,7 +30,7 @@ export interface TripSearch extends EntitySearch, DateRangeSearch,  DeviceEntity
 	searchArea?: BoundingBox	
 }
 
-export type TripGetCall = TripCall & BaseCall & { search: TripSearch }
+export type TripGetCall = TripCall & BaseGetCall & { search: TripSearch }
 
 export type TripEntitySearch = { deviceSearch?: Pick<TripSearch, "id"> }
 

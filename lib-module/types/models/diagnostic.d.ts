@@ -1,4 +1,4 @@
-import { BaseCall } from "../index.js";
+import { BaseGetCall } from "../index.js";
 import { Controller } from "./controller.js";
 import { DateRangeSearch } from "./dateRangeSearch.js";
 import { Entity } from "./entity.js";
@@ -21,7 +21,7 @@ export interface DiagnosticSearch extends EntitySearch, DateRangeSearch, GroupEn
 	diagnosticType?: DiagnosticType
 }
 
-export type DiagnosticGetCall = DiagnosticCall & BaseCall & { search: DiagnosticSearch }
+export type DiagnosticGetCall = DiagnosticCall & BaseGetCall & { search: DiagnosticSearch }
 
 export interface DiagnosticEntitySearch {
 	diagnosticSearch?: Pick<Diagnostic, "id">

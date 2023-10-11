@@ -1,4 +1,4 @@
-import { BaseCall } from "../index.js";
+import { BaseGetCall } from "../index.js";
 import { DateRangeSearch } from "./dateRangeSearch.js";
 import { DeviceEntityAndGroupSearch, DeviceEntitySearch } from "./device.js";
 import { DeviceEntity } from "./deviceEntity.js";
@@ -18,7 +18,7 @@ export type StatusDataSetCall = StatusDataCall & {
 export interface StatusDataSearch extends EntitySearch, DeviceEntityAndGroupSearch, DiagnosticEntitySearch, DateRangeSearch {
 }
 
-export type StatusDataGetCall = StatusDataCall & BaseCall & { search: StatusDataSearch }
+export type StatusDataGetCall = StatusDataCall & BaseGetCall & { search: StatusDataSearch }
 
 export type StatusDataEntitySearch = { deviceSearch?: Pick<StatusDataSearch, "id"> }
 

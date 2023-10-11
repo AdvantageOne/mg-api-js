@@ -3,7 +3,8 @@ import { Entity } from "./entity.js";
 import { EntitySearch } from "./entitySearch.js";
 import { DateRangeSearch } from "./dateRangeSearch.js";
 import { HosRuleSet } from "./HOSRuleSet.js";
-import { BaseCall } from "../index.js";
+import { BaseGetCall } from "../index.js";
+import { MediaFile } from "./mediaFile.js";
 
 export type UserCall = {
 	typeName: "User"
@@ -37,7 +38,7 @@ export interface UserSearch extends EntitySearch, DateRangeSearch {
 	userSearchType: UserSearchType
 }
 
-export type UserGetCall = UserCall & BaseCall & { search: UserSearch }
+export type UserGetCall = UserCall & BaseGetCall & { search: UserSearch }
 
 export type UserIdSearch = Pick<User,"id">;
 export type UserGroupSearch = { groupSearch?: { group: Pick<Group, "id">} }
@@ -46,14 +47,23 @@ export type UserGroupEntitySearch = { userSearch?: UserIdSearch & UserGroupSearc
 
 export type UserAuthenticationType = "BasicAuthentication" | "MyAdmin" | "SAML";
 
+export type GoogleMapStyle = "Roadmap" | "Satellite" | "Hybrid" | "Terrain";
+export type MapEngine = "GoogleMaps" | "HereMap" | "MapBox";
+export type OpenStreetMapStyle = "MapBox" | "None" | "Satellite" | "Transport";
+export type ElectricEnergyEconomyUnit = "KiloWhPer100Km" | "KiloWhPer100Miles" | "KiloWhPerKm" | "KiloWhPerMile" | "KmPerKiloWh" | "KmPerLitersE" | "LitersEPer100Km" | "MPGEImperial" | "MPGEUS" | "MilePerKiloWh" | "WhPerKm" | "WhPerMile";
+export type FuelEconomyUnit = "GallonPer100Km" | "KmPerGallon" | "KmPerLiter" | "LitersPer100Km" | "MPGImperial" | "MPGUS";
+export type ZoneDisplayMode = "All" | "Default" | "None";
+
 export interface User extends Entity {
 	acceptedEULA:                number;
 	activeDashboardReports:      any[];
-	activeFrom:                  Date;
-	activeTo:                    Date;
+	activeDefaultDashboards: 	 any[]
+	activeFrom:					 string;
+	activeTo:        	         string;
 	authorityAddress:            string;
 	authorityName:               string;
 	availableDashboardReports:   any[];
+	bookmarks: string[]
 	cannedResponseOptions:       any[];
 	carrierNumber:               string;
 	changePassword:              boolean;
@@ -63,19 +73,26 @@ export interface User extends Entity {
 	companyName:                 string;
 	countryCode:                 string;
 	dateFormat:                  string;
-	defaultGoogleMapStyle:       string;
-	defaultHereMapStyle:         string;
-	defaultMapEngine:            string;
-	defaultOpenStreetMapStyle:   string;
+	defaultGoogleMapStyle: GoogleMapStyle
+	defaultHereMapStyle: GoogleMapStyle
+	defaultMapEngine: MapEngine
+	defaultOpenStreetMapStyle: OpenStreetMapStyle
 	defaultPage:                 string;
 	designation:                 string;
+
+	displayCurrency: any
 	driveGuideVersion:           number;
-	electricEnergyEconomyUnit:   string;
+	electricEnergyEconomyUnit: ElectricEnergyEconomyUnit
 	employeeNo:                  string;
+
+	featurePreview: string
 	firstDayOfWeek:              string;
 	firstName:                   string;
-	fuelEconomyUnit:             string;
+	fuelEconomyUnit: FuelEconomyUnit
 	hosRuleSet:                  string;
+
+	isAdverseDrivingEnabled: boolean
+	isDriver: boolean
 	isEmailReportEnabled:        boolean;
 	isEULAAccepted:              boolean;
 	isExemptHOSEnabled:          boolean;
@@ -85,10 +102,16 @@ export interface User extends Entity {
 	isPersonalConveyanceEnabled: boolean;
 	isServiceUpdatesEnabled:     boolean;
 	isYardMoveEnabled:           boolean;
+
+	jobPriorities: any[]
 	language:                    string;
-	lastAccessDate:              Date;
+	lastAccessDate: 			 string;
 	lastName:                    string;
+
+	maxPCDistancePerDay: number
 	mapViews:                    MapView[];
+
+	mediaFiles: MediaFile[]
 	name:                        string;
 	phoneNumber:                 string;
 	phoneNumberExtension:        string;
@@ -98,8 +121,10 @@ export interface User extends Entity {
 	showClickOnceWarning:        boolean;
 	timeZoneId:                  string;
 	userAuthenticationType:	 	 UserAuthenticationType;
+
+	version: string
 	wifiEULA:                    number;
-	zoneDisplayMode:             string;
+	zoneDisplayMode: ZoneDisplayMode;
 }
 
 export interface MapView {

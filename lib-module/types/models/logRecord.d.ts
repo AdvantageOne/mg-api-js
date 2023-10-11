@@ -1,6 +1,6 @@
-import { BaseCall } from '../index.js';
+import { BaseGetCall } from '../index.js';
 import { DateRangeSearch } from './dateRangeSearch.js';
-import { EntityDeviceSearch } from './device.js';
+import { DeviceEntitySearch } from './device.js';
 import { DeviceEntity } from './deviceEntity.js';
 import { Entity } from './entity.js';
 import { EntitySearch } from './entitySearch.js';
@@ -13,11 +13,11 @@ export type LogRecordSetCall = LogRecordCall &{
 	entity: LogRecord
 }  
 
-export interface LogRecordSearch extends EntitySearch, EntityDeviceSearch, DateRangeSearch {
+export interface LogRecordSearch extends EntitySearch, DeviceEntitySearch, DateRangeSearch {
 
 }
 
-export type LogRecordGetCall = LogRecordCall & BaseCall & { search: LogRecordSearch}
+export type LogRecordGetCall = LogRecordCall & BaseGetCall & { search: LogRecordSearch}
 
 export interface LogRecord extends Entity, DeviceEntity {
 	latitude: number;

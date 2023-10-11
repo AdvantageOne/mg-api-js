@@ -1,6 +1,6 @@
-import { BaseCall } from "../index.js";
+import { BaseGetCall } from "../index.js";
 import { DateRangeSearch } from "./dateRangeSearch.js";
-import { DeviceSearch, EntityDeviceSearch } from "./device.js";
+import { DeviceEntityAndGroupSearch } from "./device.js";
 import { DeviceEntity } from "./deviceEntity.js";
 import { Entity } from "./entity.js";
 import { EntitySearch } from "./entitySearch.js";
@@ -14,11 +14,11 @@ export type ExceptionEventSetCall = ExceptionEventCall &{
 	entity: ExceptionEvent
 }  
 
-export interface ExceptionEventSearch extends EntitySearch, EntityDeviceSearch, RuleEntitySearch, DateRangeSearch {
+export interface ExceptionEventSearch extends EntitySearch, DeviceEntityAndGroupSearch, RuleEntitySearch, DateRangeSearch {
 	includeInvalidated?: boolean
 }
 
-export type ExceptionEventGetCall = ExceptionEventCall & BaseCall & { search: ExceptionEventSearch}
+export type ExceptionEventGetCall = ExceptionEventCall & BaseGetCall & { search: ExceptionEventSearch}
 
 export interface Exception extends ExceptionEvent {
 }

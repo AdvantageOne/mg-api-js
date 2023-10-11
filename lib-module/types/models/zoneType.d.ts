@@ -1,4 +1,4 @@
-import { BaseCall } from ".."
+import { BaseGetCall } from ".."
 import { Entity } from "./entity.js"
 import { EntitySearch } from "./entitySearch.js"
 
@@ -14,7 +14,7 @@ export interface ZoneTypeSearch extends EntitySearch {
     name?: string
 }
 
-export type ZoneTypeGetCall = ZoneTypeCall & BaseCall & { search: ZoneTypeSearch }
+export type ZoneTypeGetCall = ZoneTypeCall & BaseGetCall & { search: ZoneTypeSearch }
 
 export type ZoneTypeEntitySearch = { zoneTypes?: Pick<ZoneType, "id"> }
 

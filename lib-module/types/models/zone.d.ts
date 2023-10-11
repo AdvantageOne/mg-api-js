@@ -1,4 +1,4 @@
-import { BaseCall } from "../index.js"
+import { BaseGetCall } from "../index.js"
 import { DateRangeSearch } from "./dateRangeSearch.js"
 import { Entity } from "./entity.js"
 import { EntitySearch } from "./entitySearch.js"
@@ -23,7 +23,7 @@ export interface ZoneSearch extends EntitySearch, DateRangeSearch, GroupEntitySe
     searchArea?: BoundingBox
 }
 
-export type ZoneGetCall = ZoneCall & BaseCall & { search: ZoneSearch }
+export type ZoneGetCall = ZoneCall & BaseGetCall & { search: ZoneSearch }
 
 export type ZoneEntitySearch = { deviceSearch?: Pick<ZoneSearch, "id"> }
 

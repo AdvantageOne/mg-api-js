@@ -1,4 +1,4 @@
-import { BaseCall } from "../index.js";
+import { BaseGetCall } from "../index.js";
 import { DateRangeSearch } from "./dateRangeSearch.js";
 import { DeviceFlags } from "./deviceFlags.js";
 import { Entity } from "./entity.js";
@@ -26,7 +26,7 @@ export interface DeviceSearch extends EntitySearch, DateRangeSearch, GroupEntity
 	vehicleIdentificationNumber?: string;
 }
 
-export type DeviceGetCall = DeviceCall & BaseCall & { search: DeviceSearch }
+export type DeviceGetCall = DeviceCall & BaseGetCall & { search: DeviceSearch }
 
 export type DeviceEntityIdSearch = Pick<Device, "id">;
 export type DeviceGroupSearch = { groups?: Pick<Group, "id">[] }
