@@ -2,8 +2,6 @@ export type TypeNamesNotTyped =
   | "Annotation"
   | "Audit"
   | "Certificate"
-  | "Device"
-  | "DeviceStatusInfo"
   | "Diagnostic"
   | "DistributionList"
   | "DriverChange"

@@ -1,4 +1,4 @@
-import { BaseCall } from "../index.js";
+import { BaseGetCall } from "../index.js";
 import { Color } from "./color.js";
 import { Entity } from "./entity.js";
 import { EntitySearch } from "./entitySearch.js";
@@ -22,7 +22,7 @@ export interface GroupEntitySearch {
 	groups: Pick<Group, "id">[];
 }
 
-export type GroupGetCall = GroupCall & BaseCall & { search: GroupSearch}
+export type GroupGetCall = GroupCall & BaseGetCall & { search: GroupSearch}
 
 export interface Group extends Entity {
 	children?: Group[];

@@ -2,7 +2,7 @@ import { Group } from "./group.js";
 import { Color } from "./color.js";
 import { Diagnostic } from "./diagnostic.js";
 import { Entity } from "./entity.js";
-import { BaseCall } from "../index.js";
+import { BaseGetCall } from "../index.js";
 import { EntitySearch } from "./entitySearch.js";
 
 export type ExceptionRuleBaseType = "Custom" | "Stock" | "ZoneStop";
@@ -23,7 +23,7 @@ export interface RuleSearch extends EntitySearch {
 	name?: string;
 }
 
-export type RuleGetCall = RuleCall & BaseCall & { search: RuleSearch}
+export type RuleGetCall = RuleCall & BaseGetCall & { search: RuleSearch}
 
 export interface RuleEntitySearch {
 	ruleSearch?: Pick<Rule, "id">
