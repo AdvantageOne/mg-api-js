@@ -1,5 +1,38 @@
-import { Device } from "./device";
-import { DeviceEntity, Entity } from "./entity";
+import { BaseGetCall } from "../index.js";
+import { DateRangeSearch } from "./dateRangeSearch.js";
+import { DeviceEntitySearch } from "./device.js";
+import { DeviceEntity } from "./deviceEntity.js";
+import { Entity } from "./entity.js";
+import { EntitySearch } from "./entitySearch.js";
+import { GroupEntitySearch } from "./group.js";
+import { UserEntitySearch } from "./user.js";
+
+export type TripCall = {
+	typeName: "Trip"
+}
+
+export type TripSetCall = TripCall & {
+	entity: Trip
+}
+
+/**
+ * Max value 100, min value 0
+ */
+export type BoundingBox = {
+	bottom: number
+	left: number
+	right: number
+	top: number
+}
+
+export interface TripSearch extends EntitySearch, DateRangeSearch,  DeviceEntitySearch, UserEntitySearch {
+	includeOverlappedTrips?: boolean
+	searchArea?: BoundingBox	
+}
+
+export type TripGetCall = TripCall & BaseGetCall & { search: TripSearch }
+
+export type TripEntitySearch = { deviceSearch?: Pick<TripSearch, "id"> }
 
 export interface Trip extends Entity, DeviceEntity {
 	afterHoursDistance: number;

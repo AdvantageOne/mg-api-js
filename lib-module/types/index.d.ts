@@ -1,19 +1,46 @@
+import { AnnotationLogGetCall } from './models/annotation.js'
+import { DeviceGetCall, DeviceSearch, DeviceSetCall } from './models/device.js'
+import { DeviceStatusInfoGetCall } from './models/deviceStatusInfo.js'
+import { DiagnosticGetCall } from './models/diagnostic.js'
+import { DistributionListGetCall, DistributionListSetCall } from './models/distributionList.js'
+import { DriverChangeGetCall } from './models/driverChange.js'
+import { DutyStatusLogGetCall, DutyStatusLogSetCall } from './models/dutyStatusLog.js'
+import { DVIRLogGetCall, DVIRLogSetCall } from './models/dvirLog.js'
 import { Entity } from './models/entity.js'
+import { ExceptionEventGetCall, ExceptionEventSetCall } from './models/exception.js'
+import { FaultDataGetCall, FaultDataSetCall } from './models/faultData.js'
+import { GroupGetCall } from './models/group.js'
+import { LogRecordGetCall, LogRecordSetCall } from './models/logRecord.js'
+import { MediaFileGetCall } from './models/mediaFile.js'
+import { RuleGetCall, RuleSetCall } from './models/rule.js'
+import { StatusDataGetCall, StatusDataSetCall } from './models/statusData.js'
+import { TagGetCall } from './models/tag.js'
+import { TripGetCall } from './models/trip.js'
 import { TypeName } from './models/typeName.js'
+import { UnitOfMeasureGetCall } from './models/unitOfMeasure.js'
+import { UserGetCall, UserSetCall } from './models/user.js'
+import { ZoneGetCall, ZoneSetCall } from './models/zone.js'
+import { ZoneTypeSetCall } from './models/zoneType.js'
 
 export { TypeName } from './models/typeName.js'
 export { Entity } from './models/entity.js'
-export { DeviceEntity } from './models/entity.js'
+export { AnnotationLog } from './models/annotation.js'
 export { Device } from './models/device.js'
-export { DistributionList } from './models/distributionList.js'
+export { DeviceEntity } from './models/deviceEntity.js'
 export { DeviceStatusInfo } from './models/deviceStatusInfo.js'
+export { DistributionList } from './models/distributionList.js'
 export { Diagnostic } from './models/diagnostic.js'
+export { DriverChange } from './models/driverChange.js'
 export { Exception, ExceptionEvent } from './models/exception.js'
 export { FaultData } from './models/faultData.js'
 export { Group } from './models/group.js'
 export { LogRecord } from './models/logRecord.js'
-export { Rule } from './models/rule.js'
+export { MediaFile } from './models/mediaFile.js'
 export { StatusData } from './models/statusData.js'
+export { Tag } from './models/tag.js'
+export { Trailer } from './models/trailer.js'
+export { UnitOfMeasure } from './models/unitOfMeasure.js'
+export { Rule } from './models/rule.js'
 export { Trip } from './models/trip.js'
 export { User } from './models/user.js'
 export { Zone } from './models/zone.js'
@@ -96,40 +123,16 @@ export class GeotabApi {
   forget(): Promise<any>;
 }
 
-
-export interface DeviceSearch {
-  id?: string;
-  vin?: string;
-}
-
-export interface GroupSearch {
-  id?: string;
-}
-
-export interface DiagnosticSearch {
-  id?: string;
-}
-
-export interface Search {
-  id?: string;
-  name?: string;
-  deviceSearch?: DeviceSearch;
-  groupSearch?: GroupSearch;
-  diagnosticSearch?: DiagnosticSearch;
-  fromDate?: string;
-  toDate?: string;
-}
-
 export interface FeedSearch {
   fromDate?: string;
 }
 
-export interface BaseCall {
-  typeName: TypeName;
+export interface BaseGetCall {
   resultsLimit?: number;
 }
 
-export interface FeedCall extends GeotabCall {
+export interface FeedCall extends BaseGetCall {
+  typeName: TypeName;
   fromVersion?: string | null;
   search: FeedSearch;
 }
@@ -139,12 +142,53 @@ export interface FeedResult<T extends Entity> {
   toVersion: string;
 }
 
-export interface GeotabCall extends BaseCall {
-  entity?: Entity;
-  search?: Search;
+export type GenericSetCall = {
+  typeName: TypeName;
+  entity: Entity;
 }
 
-export type GeotabMultiCallParams = ["Get", GeotabCall][];
+export type GeotabSetCall = 
+DeviceSetCall 
+| DistributionListSetCall 
+| DutyStatusLogSetCall
+| DVIRLogSetCall
+| ExceptionEventSetCall 
+| FaultDataSetCall 
+| LogRecordSetCall 
+| RuleSetCall 
+| StatusDataSetCall 
+| UserSetCall
+| ZoneSetCall
+| ZoneTypeSetCall;
+
+export type GeotabGetCall = 
+AnnotationLogGetCall
+| DeviceGetCall
+| DeviceStatusInfoGetCall
+| DiagnosticGetCall
+| DistributionListGetCall
+| DriverChangeGetCall
+| DutyStatusLogGetCall
+| DVIRLogGetCall
+| ExceptionEventGetCall
+| FaultDataGetCall
+| GroupGetCall
+| LogRecordGetCall
+| MediaFileGetCall
+| StatusDataGetCall
+| RuleGetCall
+| TagGetCall
+| TripGetCall
+| UnitOfMeasureGetCall
+| UserGetCall
+| ZoneGetCall;
+
+export type GeotabCall = GeotabGetCall | GeotabSetCall;
+
+export type GeotabMultiGetCall = ["Get", GeotabGetCall]
+export type GeotabMultiSetCall = ["Set", GeotabSetCall]
+
+export type GeotabMultiCallParams = (GeotabMultiGetCall | GeotabMultiSetCall)[];
 
 export interface GeotabSession {
   path: string;
