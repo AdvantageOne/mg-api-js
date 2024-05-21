@@ -37,7 +37,7 @@ export interface Diagnostic extends Entity {
 	faultResetMode: FaultResetMode
 	isReadOnly: boolean
 	name: string
-	source: Source
+	source: string
 	tamperingDiagnostics: number
 	unitOfMeasure: UnitOfMeasure
 	version: string
