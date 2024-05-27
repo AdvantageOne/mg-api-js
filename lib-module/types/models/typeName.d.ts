@@ -1,4 +1,4 @@
-export type TypeNamesNotTyped = 
+export type TypeNamesNotTyped =
   | "Annotation"
   | "Audit"
   | "Certificate"
@@ -30,6 +30,7 @@ export type TypeName =
   | "Annotation"
   | "Audit"
   | "Certificate"
+  | "Controller"
   | "Device"
   | "DeviceStatusInfo"
   | "Diagnostic"
@@ -38,6 +39,7 @@ export type TypeName =
   | "DutyStatusLog"
   | "DVIRLog"
   | "ExceptionEvent"
+  | "FailureMode"
   | "FaultData"
   | "FillUp"
   | "FuelTaxDetail"
