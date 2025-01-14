@@ -44,6 +44,7 @@ export { Rule } from './models/rule.js'
 export { Trip } from './models/trip.js'
 export { User } from './models/user.js'
 export { Zone } from './models/zone.js'
+export { GetAddressResponse } from './models/getAddress.js'
 
 /**
  * Entrypoint to API. Separate class is used to expose "public"
