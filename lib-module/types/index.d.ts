@@ -22,6 +22,8 @@ import { UserGetCall, UserSetCall } from './models/user.js'
 import { ZoneGetCall, ZoneSetCall } from './models/zone.js'
 import { ZoneTypeSetCall } from './models/zoneType.js'
 
+export { DecodeVinResponse } from './models/decodeVin.js'
+
 export { TypeName } from './models/typeName.js'
 export { Entity } from './models/entity.js'
 export { AnnotationLog } from './models/annotation.js'
@@ -31,6 +33,7 @@ export { DeviceStatusInfo } from './models/deviceStatusInfo.js'
 export { DistributionList } from './models/distributionList.js'
 export { Diagnostic } from './models/diagnostic.js'
 export { DriverChange } from './models/driverChange.js'
+export { DutyStatusLog } from './models/dutyStatusLog.js'
 export { Exception, ExceptionEvent } from './models/exception.js'
 export { FaultData } from './models/faultData.js'
 export { Group } from './models/group.js'
@@ -44,6 +47,7 @@ export { Rule } from './models/rule.js'
 export { Trip } from './models/trip.js'
 export { User } from './models/user.js'
 export { Zone } from './models/zone.js'
+export { GetAddressResponse } from './models/getAddress.js'
 
 /**
  * Entrypoint to API. Separate class is used to expose "public"
