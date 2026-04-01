@@ -11,7 +11,7 @@ import { promisify } from "node:util";
 const execFileAsync = promisify(execFile);
 
 const SOURCE_PACKAGE = "@advantageone/adv-mg-api-js";
-const COPY_PATHS = ["src", "types", "README.md"];
+const COPY_PATHS = ["src", "types", "README.md", ".editorconfig", ".yarnrc.yml", "tsconfig.json"];
 const EXCLUDE_TOP_LEVEL = new Set(["node_modules", ".git", ".yarn"]);
 
 const __filename = fileURLToPath(import.meta.url);
@@ -46,8 +46,28 @@ async function run(command, args, cwd) {
   return stdout.trim();
 }
 
-async function packTarball(tempDir) {
-  const output = await run("npm", ["pack", `${SOURCE_PACKAGE}@latest`, "--silent"], tempDir);
+function parseArgs(argv) {
+  const options = {
+    fromVersion: "latest",
+  };
+
+  for (let i = 0; i < argv.length; i += 1) {
+    const arg = argv[i];
+    if (arg === "--from-version") {
+      const value = argv[i + 1];
+      if (!value || value.startsWith("--")) {
+        throw new Error("Missing value for --from-version");
+      }
+      options.fromVersion = value;
+      i += 1;
+    }
+  }
+
+  return options;
+}
+
+async function packTarball(tempDir, fromVersion) {
+  const output = await run("npm", ["pack", `${SOURCE_PACKAGE}@${fromVersion}`, "--silent"], tempDir);
   const tarballName = output.split("\n").pop()?.trim();
   if (!tarballName) {
     throw new Error("npm pack did not return a tarball name.");
@@ -139,10 +159,11 @@ async function releaseToPrivateRepo(version) {
 }
 
 async function main() {
+  const { fromVersion } = parseArgs(process.argv.slice(2));
   const tempDir = await fsp.mkdtemp(path.join(os.tmpdir(), "mg-api-publish-"));
   try {
-    log(`Packing latest ${SOURCE_PACKAGE} from npm registry`);
-    const tarballPath = await packTarball(tempDir);
+    log(`Packing ${SOURCE_PACKAGE}@${fromVersion} from npm registry`);
+    const tarballPath = await packTarball(tempDir, fromVersion);
     await extractTarball(tarballPath, tempDir);
 
     const extractedPackageDir = path.join(tempDir, "package");
