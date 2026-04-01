@@ -158,6 +158,22 @@ async function releaseToPrivateRepo(version) {
   log("Private GitHub release commit pushed.");
 }
 
+async function publishPackage() {
+  const packageJsonPath = path.join(moduleDir, "package.json");
+  const content = await fsp.readFile(packageJsonPath, "utf8");
+  const pkg = JSON.parse(content);
+  const isPrerelease = pkg.version.includes("-");
+
+  const args = ["publish", "--registry", "https://npm.pkg.github.com", "--ignore-scripts"];
+  if (isPrerelease) {
+    args.push("--tag", "beta");
+  }
+
+  log(`Publishing package ${pkg.name}@${pkg.version} to GitHub Packages`);
+  await run("pnpm", args, moduleDir);
+  log("Package published to GitHub Packages.");
+}
+
 async function main() {
   const { fromVersion } = parseArgs(process.argv.slice(2));
   const tempDir = await fsp.mkdtemp(path.join(os.tmpdir(), "mg-api-publish-"));
@@ -174,6 +190,7 @@ async function main() {
     await mirrorFromTarball(extractedPackageDir);
     await cleanTransientFiles();
     const nextVersion = await bumpLocalVersion();
+    await publishPackage();
     await releaseToPrivateRepo(nextVersion);
   } finally {
     await removePath(tempDir);
